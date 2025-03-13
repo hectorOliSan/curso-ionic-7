@@ -8,6 +8,10 @@ import {
 
 import { ToastController } from '@ionic/angular';
 
+import { flatMap, take } from 'rxjs';
+
+import { PostsFacade } from 'src/app/facades/posts.facade';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.page.html',
@@ -17,7 +21,7 @@ export class PostPage implements OnInit {
   public isNew: boolean = true;
 
   public post_form: FormGroup = this.formBuilder.group({
-    id: new FormControl(null, []),
+    id: new FormControl(undefined, []),
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     contacts: new FormControl('', []),
@@ -26,10 +30,13 @@ export class PostPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private postsFacade: PostsFacade
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isNew = false;
+  }
 
   async showToast(message: string, color: string) {
     const toast = await this.toastCtrl.create({
@@ -46,7 +53,37 @@ export class PostPage implements OnInit {
       return;
     }
 
-    if (this.isNew) this.showToast('Post creado correctamente', 'success');
-    else this.showToast('Post actualizado correctamente', 'success');
+    if (this.isNew) this.create_post();
+    else this.update_post();
+  }
+
+  async create_post() {
+    const post = this.post_form.value;
+    this.postsFacade
+      .create(post)
+      .pipe(take(1))
+      .subscribe(
+        async (success) => {
+          this.showToast('Post creado correctamente', 'success');
+        },
+        async (error) => {
+          this.showToast('Error al intentar crear el post', 'danger');
+        }
+      );
+  }
+
+  async update_post() {
+    const post = this.post_form.value;
+    this.postsFacade
+      .update(post)
+      .pipe(take(1))
+      .subscribe(
+        async (success) => {
+          this.showToast('Post actualizado correctamente', 'success');
+        },
+        async (error) => {
+          this.showToast('Error al intentar actualizar el post', 'danger');
+        }
+      );
   }
 }

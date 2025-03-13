@@ -49,17 +49,23 @@
         <ion-item>
           <ion-select
             class="ion-input"
+            fill="outline"
             formControlName="contacts"
+            label-placement="floating"
             [multiple]="true"
             label="Etiquetar contactos"
+            placeholder="Etiquetar contactos"
           >
-            <ion-select-option></ion-select-option>
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-item>
           <div class="media-picker">
-            Toca aquí para agregar una imágen/vídeo
+            <ion-icon name="cloud-upload-outline"></ion-icon>
+            <p>Toca aquí para agregar una imágen/vídeo</p>
           </div>
         </ion-item>
 

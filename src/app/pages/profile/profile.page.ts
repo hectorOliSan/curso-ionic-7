@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 
 import { ToastController } from '@ionic/angular';
 
+import { take } from 'rxjs';
+
+import { UsersFacade } from 'src/app/facades/users.facade';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -38,10 +42,19 @@ export class ProfilePage implements OnInit {
   constructor(
     private router: Router,
     private toastCtrl: ToastController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private usersFacade: UsersFacade
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.profile_form.get('email')?.disable();
+
+    this.usersFacade.get(1).subscribe((user) => {
+      this.profile_form.get('email')?.setValue(user.data.email);
+      this.profile_form.get('name')?.setValue(user.data.first_name);
+      this.profile_form.get('surname')?.setValue(user.data.last_name);
+    }, console.error);
+  }
 
   async showToast(message: string, color: string) {
     const toast = await this.toastCtrl.create({
@@ -63,8 +76,18 @@ export class ProfilePage implements OnInit {
       return;
     }
 
-    this.profile_form.reset();
-    this.showToast('Perfil actualizado correctamente', 'success');
+    const user = this.profile_form.value;
+    this.usersFacade
+      .update(user)
+      .pipe(take(1))
+      .subscribe(
+        async (success) => {
+          this.showToast('Perfil actualizado correctamente', 'success');
+        },
+        async (error) => {
+          this.showToast('Error al intentar actualizar perfil', 'danger');
+        }
+      );
   }
 
   async updatePassword(e: Event) {
@@ -97,8 +120,23 @@ export class ProfilePage implements OnInit {
       return;
     }
 
+    const user = this.profile_form.value;
+    this.usersFacade
+      .update(user)
+      .pipe(take(1))
+      .subscribe(
+        async (success) => {
+          this.showToast('Contraseña actualizada correctamente', 'success');
+        },
+        async (error) => {
+          this.showToast(
+            'Error al intentar actualizar la contraseña',
+            'danger'
+          );
+        }
+      );
+
     this.password_form.reset();
-    this.showToast('Contraseña actualizada correctamente', 'success');
   }
 
   goToLogin() {

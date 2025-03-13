@@ -8,6 +8,9 @@ import {
 import { Router } from '@angular/router';
 
 import { AlertController, ToastController } from '@ionic/angular';
+import { take } from 'rxjs';
+
+import { UsersFacade } from 'src/app/facades/users.facade';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +27,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private usersFacade: UsersFacade
   ) {}
 
   ngOnInit() {}
@@ -78,9 +82,19 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    this.showToast('Sesión iniciada correctamente', 'success');
-    this.resetForm();
-    this.router.navigate(['tabs']);
+    this.usersFacade
+      .login(this.login_form.get('email')?.value, this.login_form.get('password')?.value)
+      .pipe(take(1))
+      .subscribe(
+        async (success) => {
+          this.showToast('Sesión iniciada correctamente', 'success');
+          this.resetForm();
+          this.router.navigate(['tabs']);
+        },
+        async (error) => {
+          this.showToast('Credenciales incorrectas', 'danger');
+        }
+      );
   }
 
   async register() {

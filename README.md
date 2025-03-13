@@ -189,3 +189,39 @@ En el proyecto social-map, realizar los siguientes ajustes:
    - Confirme nueva contraseña
 
 3. Cada uno de estos formularios, debe tener su botón de Enviar respectivo y su flujo de trabajo.
+
+## 6. Conectividad con API Rest y peticiones HTTP
+
+- Ejercicio 1
+
+Tomar el proyecto social-map y realizar las siguientes mejoras:
+
+1. justar la página de Perfil para que trabaje con UsersFacade para editar la información de usuario. El email no se debe poder cambiar.
+
+2. Una vez editada la información, debe mostrar un toast de exito.
+
+3. Crear el flujo de Facade, Request y la implementación del cambio de contraseña.
+
+> Nota: Puedes montar tu backend, o bien que las requests devuelvan siempre un valor fijo.
+
+- Ejercicio 2
+
+Tomar el proyecto social-map y realizar las siguientes mejoras:
+
+1. Crear PostsRequest con métodos que contemplen un CRUD.
+
+2. Crear PostsFacade con métodos que contengan los de PostsRequest.
+
+3. Ajustar la página Post para que trabaje con PostsFacade a la hora de crear un nuevo post.
+
+> Nota: Puedes montar tu backend, o bien que las requests devuelvan siempre un valor fijo.
+
+- Ejercicio 3
+
+Tomar el proyecto social-map y realizar las siguientes mejoras:
+
+1. Tomar la página Registro y agregar un AsyncValidator que revise si el email ingresado ya está siendo utilizado o no.
+
+2. Tomar la página de Login, e implementar UsersService en el flujo de inicio de sesión.
+
+> Nota: Puedes montar tu backend, o bien que las requests devuelvan siempre un valor fijo.

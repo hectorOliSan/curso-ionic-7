@@ -7,9 +7,15 @@ ion-content {
       width: 100%;
     }
 
-    .user-image {
-      border: 0.1em solid #b3b3b3;
-      border-radius: 50%;
+    .col-image {
+      display: flex;
+      align-items: center;
+
+      .user-image {
+        border: 0.1em solid #b3b3b3;
+        border-radius: 50%;
+        width: 8em;
+      }
     }
 
     ion-item {
