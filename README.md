@@ -225,3 +225,17 @@ Tomar el proyecto social-map y realizar las siguientes mejoras:
 2. Tomar la página de Login, e implementar UsersService en el flujo de inicio de sesión.
 
 > Nota: Puedes montar tu backend, o bien que las requests devuelvan siempre un valor fijo.
+
+## 7. Ionic Native
+
+- Ejercicio 1
+
+¿Qué ventajas nos da utilizar Ionic Native?
+
+- Ejercicio 2
+
+¿Cómo nos permite Ionic Native la comunicación entre la capa Web de nuestras aplicaciones y la capa nativa de los dispositivos iOS y Android?
+
+- Ejercicio 3
+
+¿Qué ventajas nos brida Capacitor por sobre Cordova?
