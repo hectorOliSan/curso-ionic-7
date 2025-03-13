@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title
+      class="ion-text-center"
+    >
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar
+    color="primary"
+    search-icon="code-slash-outline"
+  >
+  </ion-searchbar>
+
+  <div class="page_content">
+    <p
+      *ngFor="let count of [0, 1, 2, 3]"
+    >
+      <b>{{ count }}</b>. {{ lipsum }}
+    </p>
+
+    <ion-list>
+      <ion-item *ngFor="let country of results">
+        {{ country }}
+      </ion-item>
+    </ion-list>
+
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-searchbar
+      [debounce]="2000"
+      (ionInput)="handleInput($event)"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-footer>
