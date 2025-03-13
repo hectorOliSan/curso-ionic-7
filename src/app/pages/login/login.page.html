@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">LOGIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-content">
+    <ion-grid>
+      <ion-row>
+        <h1 class="page-title">Social Map</h1>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <form action="">
+            <ion-list lines="none">
+              <ion-item>
+                <ion-input
+                  placeholder="email@email.com"
+                  label-placement="floating"
+                  fill="outline"
+                  label="Nombre de usuario"
+                  name="email"
+                >
+                </ion-input>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-input
+                  placeholder="********"
+                  label="Contraseña"
+                  label-placement="floating"
+                  fill="outline"
+                  [clearInput]="true"
+                  type="password"
+                >
+                </ion-input>
+              </ion-item>
+            </ion-list>
+          </form>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button (click)="login()">LOGIN</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-text-center">
+  <ion-button routerLink="feed" fill="outline">
+    <ion-icon slot="start" name="logo-ionic"></ion-icon>feed
+  </ion-button>
+  <ion-button routerLink="contacts" fill="outline">
+    <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+    contacts
+  </ion-button>
+  <br>
+  <ion-button routerLink="registro" fill="outline">REGISTRO</ion-button>
+</ion-footer>

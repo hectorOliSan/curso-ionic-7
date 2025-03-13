@@ -42,3 +42,49 @@ Ejecuta la aplicación en Android, y, si dispones de un equipo Apple, ejecútala
 3. La toolbar del footer, debe contener una search-bar.
 4. La search-bar debe filtrar una lista de 10 países.
 5. Agrega un debounce de 2 segundos al search-bar.
+
+## 3. Los Componentes
+
+- Ejercicio 1
+
+Vamos a crear una nueva página en nuestro proyecto social-map.
+
+`ionic generate page pages/login`
+
+Esta será nuestra página de login.
+
+Vamos a necesitar un formulario donde pidamos nombre de usuario, contraseña y un botón de login.
+
+También un link a la página de registro, para los usuarios nuevos.
+
+Debemos utilizar, al menos, ion-grid, ion-list, ion-input, ion-button.
+
+Trata de personalizar los estilos que puedas.
+
+- Ejercicio 2
+
+Vamos a crear otra una nueva página en nuestro proyecto social-map.
+
+`ionic generate page pages/feed`
+
+Esta será nuestra página de feed.
+
+Esta página consiste de una lista de ion-cards, cada card tiene un titulo, subtítulo y contenido.
+
+El contenido puede ser una imagen o un texto.
+
+De momento, tomemos el contenido de un array.
+
+El contenido de esta página se debe recargar al hacer pull-to-refresh.
+
+- Ejercicio 3
+
+Vamos a crear una tercera nueva página en nuestro proyecto social-map.
+
+`ionic generate page pages/contacts`
+
+Esta será nuestra página de contactos.
+
+El cuerpo, será una lista de avatars, cada avatar con un avatar, un titulo (nombre del contacto), y un subtítulo con la fecha de la última publicación.
+
+El cuerpo de la página debe estar contenido y gestionado por un ion-infinite-scroll.

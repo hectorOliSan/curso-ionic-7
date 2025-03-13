@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">CONTACTS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list lines="none">
+    <ion-item *ngFor="let contact of contacts">
+      <ion-avatar slot="start">
+        <img alt="{{contact.name}}" [src]="contact.avatar" />
+      </ion-avatar>
+      <ion-label>
+        <strong>{{contact.name}}</strong>
+        <p>{{contact.date | date}}</p>
+      </ion-label>>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
