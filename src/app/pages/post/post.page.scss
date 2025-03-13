@@ -1,0 +1,23 @@
+ion-content {
+  .page-content {
+    padding: 1em;
+
+    ion-item {
+      margin-bottom: 1rem;
+
+      .ion-input {
+        margin-top: 0.5rem;
+        --padding-start: 1rem;
+      }
+
+      .media-picker {
+        cursor: pointer;
+        color: #888;
+      }
+    }
+  }
+}
+
+ion-footer {
+  padding: 1em;
+}

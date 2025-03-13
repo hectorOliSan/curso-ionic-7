@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
-interface NewUser {
-  name: string;
-  surname: string;
-  email: string;
-  province: string;
-  city: string;
-  age: number;
-}
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -17,16 +15,20 @@ interface NewUser {
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  newUser: NewUser = {
-    name: '',
-    surname: '',
-    email: '',
-    province: '',
-    city: '',
-    age: 0,
-  };
+  public register_form: FormGroup = this.formBuilder.group({
+    name: new FormControl('', [Validators.required]),
+    surname: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    province: new FormControl('', []),
+    city: new FormControl('', []),
+    age: new FormControl('', []),
+  });
 
-  constructor(private toastCtrl: ToastController, private router: Router) {}
+  constructor(
+    private toastCtrl: ToastController,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {}
 
@@ -34,27 +36,33 @@ export class RegisterPage implements OnInit {
     const toast = await this.toastCtrl.create({
       message,
       duration: 3000,
-      color
+      color,
     });
     await toast.present();
   }
 
   async createAccount(e: Event) {
     e.preventDefault();
-    
-    if (
-      Object.values(this.newUser).some((value) => value === '' || value === 0)
-    ) {
-      this.showToast('Por favor, completa todos los campos', 'danger');
+
+    if (this.register_form.invalid) {
+      this.showToast(
+        'Por favor, completa todos los campos requeridos',
+        'danger'
+      );
       return;
     }
 
     this.showToast(
       `Cuenta creada correctamente.
-      Revisa tu email (${this.newUser.email}) para acceder`,
+      Revisa tu email (${this.register_form.controls['email'].value}) para acceder`,
       'success'
     );
 
+    this.resetForm();
     this.router.navigate(['login'], { replaceUrl: true });
+  }
+
+  async resetForm() {
+    this.register_form.reset();
   }
 }

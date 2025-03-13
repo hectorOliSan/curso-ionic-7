@@ -5,13 +5,216 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div class="page-content">
+    <ion-button class="btn-center" color="dark" (click)="goToLogin()">
+      Salir
+    </ion-button>
 
-  <ion-button
-    class="ion-padding center"
-    color="dark"
-    routerLink=""
-  >
-    Salir
-  </ion-button>
+    <ion-grid>
+      <ion-row>
+        <h1 class="page-title">PERFIL DE USUARIO</h1>
+      </ion-row>
 
+      <form
+        [formGroup]="profile_form"
+        (ngSubmit)="updateProfile($event)"
+        id="profile_ngform"
+      >
+        <ion-row>
+          <ion-col>
+            <img class="user-image" [src]="USER_AVATAR" />
+          </ion-col>
+          <ion-col>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-input
+                  class="ion-input"
+                  [clearInput]="true"
+                  fill="outline"
+                  formControlName="name"
+                  label-placement="floating"
+                  label="Nombre"
+                  placeholder="Nombre"
+                  type="text"
+                  errorText="Campo requerido"
+                  helperText="Campo requerido"
+                  [counter]="true"
+                  maxlength="20"
+                >
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input
+                  class="ion-input"
+                  [clearInput]="true"
+                  fill="outline"
+                  formControlName="surname"
+                  label-placement="floating"
+                  label="Apellidos"
+                  placeholder="Apellidos"
+                  type="text"
+                  errorText="Campo requerido"
+                  helperText="Campo requerido"
+                  [counter]="true"
+                  maxlength="50"
+                >
+                </ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-input
+                  class="ion-input"
+                  [clearInput]="true"
+                  fill="outline"
+                  formControlName="email"
+                  label-placement="floating"
+                  label="Email"
+                  placeholder="Email"
+                  type="email"
+                  errorText="Email inválido"
+                  helperText="Campo requerido"
+                  [counter]="true"
+                  maxlength="30"
+                >
+                </ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-input
+                  class="ion-input"
+                  fill="outline"
+                  label="Fecha de nacimiento"
+                  label-placement="floating"
+                  value="{{ profile_form.get('birthdate')?.value | date: 'dd/MM/yyyy' }}"
+                  id="birth-date"
+                >
+                </ion-input>
+                <ion-popover trigger="birth-date" size="cover">
+                  <ng-template>
+                    <ion-datetime
+                      presentation="date"
+                      [preferWheel]="true"
+                      formControlName="birthdate"
+                    ></ion-datetime>
+                  </ng-template>
+                </ion-popover>
+              </ion-item>
+
+              <ion-item>
+                <ion-select
+                  class="ion-input"
+                  fill="outline"
+                  formControlName="sexo"
+                  label-placement="floating"
+                  label="Sexo"
+                  placeholder="Sexo"
+                >
+                  <ion-select-option value="h">Hombre</ion-select-option>
+                  <ion-select-option value="m">Mujer</ion-select-option>
+                  <ion-select-option value="o">Otros</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-input
+                  class="ion-input"
+                  [clearInput]="true"
+                  fill="outline"
+                  type="tel"
+                  formControlName="phone"
+                  label-placement="floating"
+                  label="Teléfono"
+                  placeholder="XXXXXXXXX"
+                  [counter]="true"
+                  maxlength="9"
+                ></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-button type="submit">ACTUALIZAR PERFIL</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+
+      <hr />
+
+      <ion-row>
+        <h2 class="page-title">CAMBIAR CONTRASEÑA</h2>
+      </ion-row>
+
+      <form
+        (ngSubmit)="updatePassword($event)"
+        [formGroup]="password_form"
+        id="password_ngform"
+      >
+        <ion-list lines="none">
+          <ion-item>
+            <ion-input
+              class="ion-input"
+              [clearInput]="true"
+              fill="outline"
+              formControlName="password"
+              label-placement="floating"
+              label="Contraseña actual"
+              placeholder="********"
+              type="password"
+              errorText="Campo requerido"
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              class="ion-input"
+              [clearInput]="true"
+              fill="outline"
+              formControlName="newPassword"
+              label-placement="floating"
+              label="Nueva contraseña"
+              placeholder="********"
+              type="password"
+              errorText="Campo requerido"
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              class="ion-input"
+              [clearInput]="true"
+              fill="outline"
+              formControlName="newPasswordConfirm"
+              label-placement="floating"
+              label="Confirmar nueva contraseña"
+              placeholder="********"
+              type="password"
+              errorText="Campo requerido"
+            >
+            </ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <ion-button type="submit"> CAMBIAR CONTRASEÑA </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-grid>
+  </div>
 </ion-content>

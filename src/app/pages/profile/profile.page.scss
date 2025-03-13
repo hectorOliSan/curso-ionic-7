@@ -1,4 +1,31 @@
-.center {
-    text-align: center;
-    width: 100%;
+ion-content {
+  .page-content {
+    padding: 1em;
+
+    .page-title {
+      text-align: center;
+      width: 100%;
+    }
+
+    .user-image {
+      border: 0.1em solid #b3b3b3;
+      border-radius: 50%;
+    }
+
+    ion-item {
+      .ion-input {
+        margin-top: 0.5rem;
+        --padding-start: 1rem;
+      }
+    }
+
+    .btn-center {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+ion-footer {
+  padding: 1em;
 }

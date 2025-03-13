@@ -6,69 +6,126 @@
 
 <ion-content [fullscreen]="true">
   <div class="page_content">
-    <form action="">
-      <ion-list>
+    <form
+      [formGroup]="register_form"
+      (ngSubmit)="createAccount($event)"
+      id="register_ngform"
+    >
+      <ion-list lines="none">
         <ion-item>
           <ion-input
-            name="name"
-            type="text"
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="name"
+            label-placement="floating"
+            label="Nombre"
             placeholder="Nombre"
-            [(ngModel)]="newUser.name"
-          ></ion-input>
+            type="text"
+            errorText="Campo requerido"
+            helperText="Campo requerido"
+            [counter]="true"
+            maxlength="20"
+          >
+          </ion-input>
         </ion-item>
+
         <ion-item>
           <ion-input
-            name="surname"
-            type="text"
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="surname"
+            label-placement="floating"
+            label="Apellidos"
             placeholder="Apellidos"
-            [(ngModel)]="newUser.surname"
-          ></ion-input>
+            type="text"
+            errorText="Campo requerido"
+            helperText="Campo requerido"
+            [counter]="true"
+            maxlength="50"
+          >
+          </ion-input>
         </ion-item>
+
         <ion-item>
           <ion-input
-            name="email"
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="email"
+            label-placement="floating"
+            label="Email"
+            placeholder="Email"
             type="email"
-            placeholder="E-mail"
-            [(ngModel)]="newUser.email"
-          ></ion-input>
+            errorText="Email inválido"
+            helperText="Campo requerido"
+            [counter]="true"
+            maxlength="30"
+          >
+          </ion-input>
         </ion-item>
+
         <ion-item>
           <ion-input
-            name="province"
-            type="text"
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="province"
+            label-placement="floating"
+            label="Provincia"
             placeholder="Provincia"
-            [(ngModel)]="newUser.province"
-          ></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input
-            name="city"
             type="text"
-            placeholder="Ciudad"
-            [(ngModel)]="newUser.city"
-          ></ion-input>
+            [counter]="true"
+            maxlength="30"
+          >
+          </ion-input>
         </ion-item>
+
         <ion-item>
           <ion-input
-            name="age"
-            type="number"
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="city"
+            label-placement="floating"
+            label="Ciudad"
+            placeholder="Ciudad"
+            type="text"
+            [counter]="true"
+            maxlength="50"
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="age"
+            label-placement="floating"
+            label="Edad"
             placeholder="Edad"
-            [(ngModel)]="newUser.age"
-          ></ion-input>
+            value="18"
+            type="number"
+            min="18"
+            max="99"
+            helperText="El valor debe ser mayor 18 y menor 99"
+          >
+          </ion-input>
         </ion-item>
       </ion-list>
     </form>
   </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button routerLink="">
+    <ion-fab-button (click)="resetForm()" routerLink="">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
 
 <ion-footer class="ion-text-center">
-  <ion-button type="submit" (click)="createAccount($event)">
-    Crear Cuenta
-  </ion-button>
+  <ion-button type="submit" form="register_ngform">CREAR CUENTA</ion-button>
 </ion-footer>

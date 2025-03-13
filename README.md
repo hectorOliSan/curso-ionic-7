@@ -140,3 +140,52 @@ Nombre, Apellidos, E-mail, Provincia, Ciudad, Edad.
 Y un botón de confirmación.
 
 3. Al clicar en el botón de confirmación, mostrar un Toast informando al usuario que se ha creado su cuenta y se ha enviado una contraseña provisoria a su correo electrónico. Luego redirigir a Login.
+
+## 5. Formularios
+
+- Ejercicio 1
+
+En el proyecto social-map, realizar los siguientes ajustes:
+
+1. Implementar el formulario de la página Login con ReactiveForms.
+
+No te olvides de agregar validación para los campos.
+
+2. Implementar el formulario de la página Registro con ReactiveForms.
+
+No te olvides de agregar validación para cada campo.
+
+- Ejercicio 2
+
+En el proyecto social-map, realizar los siguientes ajustes:
+
+1. En la página Post (Donde crearemos posts), crear un formulario con ReactiveForms que tenga los siguientes campos:
+
+   - Titulo
+   - Texto
+   - Contactos etiquetados
+   - Imagen(es) y/o vídeo(s)
+
+2. El formulario debe servir tanto para crear como para editar nuevos posts.
+
+- Ejercicio 3
+
+En el proyecto social-map, realizar los siguientes ajustes:
+
+1. En la página Perfil (Perfil de usuario), crear un formulario con ReactiveForms que tenga los siguientes campos:
+
+   - Imagen de perfil
+   - Nombre
+   - Apellidos
+   - Fecha de nacimiento
+   - Sexo
+   - E-mail
+   - Teléfono
+
+2. Tendrá otro formulario donde se podrá cambiar la contraseña, con los siguientes campos:
+
+   - Contraseña anterior
+   - Nueva contraseña
+   - Confirme nueva contraseña
+
+3. Cada uno de estos formularios, debe tener su botón de Enviar respectivo y su flujo de trabajo.

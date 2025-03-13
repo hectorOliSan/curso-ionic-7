@@ -1,20 +1,36 @@
-.page-title {
-  text-align: center;
-  width: 100%;
-}
+ion-content {
+  .page-content {
+    padding: 1em;
 
-.page-content {
-  padding: 1em;
+    .page-title {
+      text-align: center;
+      width: 100%;
+    }
 
-  .ion-input {
-    margin-top: 0.5rem;
-    --padding-start: 1rem;
+    ion-item {
+      margin-bottom: 1rem;
+      align-items: start;
+
+      .ion-input {
+        margin-top: 0.5rem;
+        --padding-start: 1rem;
+      }
+
+      .ion-note {
+        font-size: 0.5rem;
+        padding-left: 0.5rem;
+        max-width: 5rem;
+
+        ion-note {
+          color: red
+        }
+      }
+    }
+
+    .forgot_btn {
+      cursor: pointer;
+    }
   }
-}
-
-
-.forgot_btn {
-  cursor: pointer;
 }
 
 ion-footer {

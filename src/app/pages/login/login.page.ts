@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AlertController, ToastController } from '@ionic/angular';
-
-interface User {
-  mail: string;
-  password: string;
-}
 
 @Component({
   selector: 'app-login',
@@ -14,18 +15,16 @@ interface User {
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  mail: string = '';
-  password: string = '';
-
-  user: User = {
-    mail: 'social-map@mail.com',
-    password: 'social123',
-  };
+  public login_form: FormGroup = this.formBuilder.group({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
 
   constructor(
     private router: Router,
     private alertCtrl: AlertController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {}
@@ -33,8 +32,8 @@ export class LoginPage implements OnInit {
   async showToast(message: string, color: string) {
     const toast = await this.toastCtrl.create({
       message,
-      duration: 3000,
-      color
+      duration: 2000,
+      color,
     });
     await toast.present();
   }
@@ -55,7 +54,10 @@ export class LoginPage implements OnInit {
           text: 'Recuperar',
           role: 'confirm',
           handler: async () => {
-            this.showToast('Revisa tu email para recuperar tu contraseña', 'dark');
+            this.showToast(
+              'Revisa tu email para recuperar tu contraseña',
+              'dark'
+            );
             this.router.navigate(['login']);
           },
         },
@@ -70,16 +72,23 @@ export class LoginPage implements OnInit {
 
   async login(e: Event) {
     e.preventDefault();
-    if (this.mail === this.user.mail && this.password === this.user.password) {
-      this.mail = '';
-      this.password = '';
-      this.router.navigate(['tabs']);
-    } else {
+
+    if (this.login_form.invalid) {
       this.showToast('Email o contraseña no válidos', 'danger');
+      return;
     }
+
+    this.showToast('Sesión iniciada correctamente', 'success');
+    this.resetForm();
+    this.router.navigate(['tabs']);
   }
 
-  register() {
+  async register() {
+    this.resetForm();
     this.router.navigate(['register'], { replaceUrl: true });
+  }
+
+  async resetForm() {
+    this.login_form.reset();
   }
 }

@@ -13,33 +13,47 @@
 
       <ion-row>
         <ion-col>
-          <form action="">
+          <form
+            [formGroup]="login_form"
+            (ngSubmit)="login($event)"
+            id="login_ngform"
+          >
             <ion-list lines="none">
               <ion-item>
                 <ion-input
                   class="ion-input"
-                  [(ngModel)]="mail"
+                  [clearInput]="true"
                   fill="outline"
+                  formControlName="email"
                   label-placement="floating"
                   label="Email"
-                  name="mail"
                   placeholder="tu@email.com"
                   type="email"
+                  errorText="Email inválido"
+                  helperText="Campo requerido"
+                  [counter]="true"
+                  maxlength="30"
                 >
                 </ion-input>
+
+                <!-- <div class="ion-note" *ngIf="login_form.get('email')?.invalid && login_form.get('email')?.touched">
+                  <ion-note *ngIf="login_form.get('email')?.hasError('required')">Campo requerido</ion-note>
+                  <ion-note *ngIf="login_form.get('email')?.hasError('email')">Email inválido</ion-note>
+                </div> -->
               </ion-item>
-              <br />
+
               <ion-item>
                 <ion-input
                   class="ion-input"
                   [clearInput]="true"
-                  [(ngModel)]="password"
                   fill="outline"
+                  formControlName="password"
                   label-placement="floating"
                   label="Contraseña"
-                  name="password"
                   placeholder="********"
                   type="password"
+                  errorText="Contraseña incorrecta"
+                  helperText="Campo requerido"
                 >
                 </ion-input>
               </ion-item>
@@ -50,7 +64,7 @@
 
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-button (click)="login($event)">LOGIN</ion-button>
+          <ion-button type="submit" form="login_ngform">LOGIN</ion-button>
         </ion-col>
       </ion-row>
 
@@ -65,6 +79,6 @@
   </div>
 </ion-content>
 
-<ion-footer class="ion-text-center">
+<ion-footer class="ion-footer ion-text-center">
   <ion-button (click)="register()" fill="outline">REGISTRO</ion-button>
 </ion-footer>

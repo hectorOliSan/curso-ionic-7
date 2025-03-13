@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      {{isNew ? 'CREAR' : 'EDITAR'}} POST
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-content">
+    <form [formGroup]="post_form" (ngSubmit)="process_post()" id="post_ngform">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-input
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="title"
+            label-placement="floating"
+            label="Título"
+            placeholder="Título"
+            type="text"
+            errorText="Campo requerido"
+            helperText="Campo requerido"
+            [counter]="true"
+            maxlength="30"
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            class="ion-input"
+            [clearInput]="true"
+            fill="outline"
+            formControlName="description"
+            label-placement="floating"
+            label="Descripción"
+            placeholder="Descripción"
+            type="text"
+            errorText="Campo requerido"
+            helperText="Campo requerido"
+            [counter]="true"
+            maxlength="256"
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select
+            class="ion-input"
+            formControlName="contacts"
+            [multiple]="true"
+            label="Etiquetar contactos"
+          >
+            <ion-select-option></ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <div class="media-picker">
+            Toca aquí para agregar una imágen/vídeo
+          </div>
+        </ion-item>
+
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-text-center">
+  <ion-button type="submit" form="post_ngform">
+    {{isNew ? 'CREAR' : 'ACTUALIZAR'}}
+  </ion-button>
+</ion-footer>

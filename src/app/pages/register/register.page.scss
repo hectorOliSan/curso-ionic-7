@@ -1,5 +1,14 @@
-.page-content {
+ion-content {
+  .page-content {
     padding: 1em;
+  }
+
+  ion-item {
+    .ion-input {
+      margin-top: 0.5rem;
+      --padding-start: 1rem;
+    }
+  }
 }
 
 ion-footer {
