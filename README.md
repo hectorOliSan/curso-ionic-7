@@ -25,22 +25,31 @@ Ejecuta la aplicación en Android, y, si dispones de un equipo Apple, ejecútala
 - Ejercicio 1
 
 1. Crear un proyecto nuevo de Ionic en blanco.
+
 2. Agregar a la página principal un header que contenta una toolbar con el título de la página.
+
 3. El header debe ser transparente y fijo.
+
 4. Cargar contenido dummy (Lipsum) en el content de la página.
 
 - Ejercicio 2
 
 1. Al proyecto anterior, agregar una search-bar
+
 2. La search-bar debe tener un ícono personalizado (Recuerda que puedes utilizar cualquiera de Ionicons).
+
 3. El search-bar debe ser de color azul sólo en modo md.
 
 - Ejercicio 3
 
 1. Agrega a nuestro proyecto de este módulo, un footer.
+
 2. Este footer debe tener una toolbar.
+
 3. La toolbar del footer, debe contener una search-bar.
+
 4. La search-bar debe filtrar una lista de 10 países.
+
 5. Agrega un debounce de 2 segundos al search-bar.
 
 ## 3. Los Componentes
@@ -88,3 +97,46 @@ Esta será nuestra página de contactos.
 El cuerpo, será una lista de avatars, cada avatar con un avatar, un titulo (nombre del contacto), y un subtítulo con la fecha de la última publicación.
 
 El cuerpo de la página debe estar contenido y gestionado por un ion-infinite-scroll.
+
+## 4. La Navegación
+
+- Ejercicio 1
+
+Tomar el proyecto social-map y efectuar los siguientes cambios:
+
+1. Hacer que al clicar login, verifique un usuario y una contraseña, quemados en la pagina de login (Luego modificaremos esto), y si son los correctos, navegue a la página tabs.
+
+2. La página tabs, debe presentar las páginas de nuesta app social-map y no los tabs.
+
+Las páginas/tabs son: Mapa, Feed, Contacto, Perfil
+
+3. Los tabs deben ser iconos de Ionicons.
+
+4. Cada tab debe navegar a su página (En tabs)
+
+- Ejercicio 2
+
+En el proyecto social-map, realizar los siguientes cambios:
+
+1. Agregar un link de "He olvidado mi contraseña".
+
+2. Este link, debe abrir un Alert.
+
+3. El Alert debe presentar un campo de texto pidiendo la dirección de correo electrónico del usuario, un botón de confirmación y uno para cancelar la operación.
+
+4. El Alert debería tener un titulo explicando que es y un breve texto explicando el proceso de recuperación de contraseña.
+
+5. Al confirmarse la operación, mostrar un toast informando la operación y redirigir a la página de Login.
+
+- Ejercicio 3
+
+Tomar el proyecto social-map y realizar los siguientes cambios:
+
+1. Crear una página nueva "registro", para crear nuevas cuentas.
+
+2. Esta página debe tener un formulario con los siguientes campos:
+
+Nombre, Apellidos, E-mail, Provincia, Ciudad, Edad.
+Y un botón de confirmación.
+
+3. Al clicar en el botón de confirmación, mostrar un Toast informando al usuario que se ha creado su cuenta y se ha enviado una contraseña provisoria a su correo electrónico. Luego redirigir a Login.

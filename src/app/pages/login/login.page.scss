@@ -1,10 +1,20 @@
 .page-title {
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 .page-content {
-    padding: 1em;
+  padding: 1em;
+
+  .ion-input {
+    margin-top: 0.5rem;
+    --padding-start: 1rem;
+  }
+}
+
+
+.forgot_btn {
+  cursor: pointer;
 }
 
 ion-footer {

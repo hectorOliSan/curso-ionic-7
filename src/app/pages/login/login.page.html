@@ -17,22 +17,28 @@
             <ion-list lines="none">
               <ion-item>
                 <ion-input
-                  placeholder="email@email.com"
-                  label-placement="floating"
+                  class="ion-input"
+                  [(ngModel)]="mail"
                   fill="outline"
-                  label="Nombre de usuario"
-                  name="email"
+                  label-placement="floating"
+                  label="Email"
+                  name="mail"
+                  placeholder="tu@email.com"
+                  type="email"
                 >
                 </ion-input>
               </ion-item>
-              <br>
+              <br />
               <ion-item>
                 <ion-input
-                  placeholder="********"
-                  label="Contraseña"
-                  label-placement="floating"
-                  fill="outline"
+                  class="ion-input"
                   [clearInput]="true"
+                  [(ngModel)]="password"
+                  fill="outline"
+                  label-placement="floating"
+                  label="Contraseña"
+                  name="password"
+                  placeholder="********"
                   type="password"
                 >
                 </ion-input>
@@ -44,7 +50,15 @@
 
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-button (click)="login()">LOGIN</ion-button>
+          <ion-button (click)="login($event)">LOGIN</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-padding ion-text-center">
+          <a class="forgot_btn" (click)="recover()">
+            He olvidado mi contraseña
+          </a>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -52,13 +66,5 @@
 </ion-content>
 
 <ion-footer class="ion-text-center">
-  <ion-button routerLink="feed" fill="outline">
-    <ion-icon slot="start" name="logo-ionic"></ion-icon>feed
-  </ion-button>
-  <ion-button routerLink="contacts" fill="outline">
-    <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-    contacts
-  </ion-button>
-  <br>
-  <ion-button routerLink="registro" fill="outline">REGISTRO</ion-button>
+  <ion-button (click)="register()" fill="outline">REGISTRO</ion-button>
 </ion-footer>

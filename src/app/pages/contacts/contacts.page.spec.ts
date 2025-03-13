@@ -1,4 +1,6 @@
+import { IonicModule } from '@ionic/angular';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { ContactsPage } from './contacts.page';
 
 describe('ContactsPage', () => {
