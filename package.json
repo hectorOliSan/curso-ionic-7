@@ -1,8 +1,8 @@
 {
-  "name": "template",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "name": "social-map",
+  "version": "0.1.3",
+  "author": "Héctor Olivares Sánchez",
+  "homepage": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -61,5 +61,5 @@
     "karma-jasmine-html-reporter": "2.1.0",
     "typescript": "5.5.4"
   },
-  "description": "An Ionic project"
+  "description": "Curso de Ionic 7"
 }
