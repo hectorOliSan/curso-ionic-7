@@ -2,6 +2,10 @@ ion-content {
   .page-content {
     padding: 1em;
 
+    ion-col {
+      text-align: center;
+    }
+
     ion-item {
       margin-bottom: 1rem;
 
@@ -12,8 +16,13 @@ ion-content {
 
       .media-picker {
         cursor: pointer;
-        color: #888;
         width: 100%;
+        min-height: 12em;
+        max-height: 12em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         padding: 1rem;
         text-align: center;
         border: 0.1em dashed #b3b3b3;
@@ -26,6 +35,15 @@ ion-content {
 
         p {
           margin: 0;
+        }
+
+        #photoShow,
+        #videoShow {
+          display: none;
+          width: 100%;
+          height: 12em;
+          object-fit: cover;
+          border-radius: 0.5em;
         }
       }
     }

@@ -50,5 +50,14 @@
 	<string>La aplicación requiere de acceso a las prestaciones de geolocalización constantemente.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>La aplicación requiere de acceso a las prestaciones de geolocalización mientras esté en uso.</string>
+
+	<key>NSCameraUsageDescription</key>
+	<string>La aplicación requiere acceso a la cámara del dispositivo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>La aplicación requiere acceso a la librería de fotos.</string>
+	<key>UIFileSharingEnabled</key>
+	<string>Application supports iTunes file sharing</string>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<string>Supports opening documents in place</string>
 </dict>
 </plist>

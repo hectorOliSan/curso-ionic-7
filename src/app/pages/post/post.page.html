@@ -56,19 +56,47 @@
             label="Etiquetar contactos"
             placeholder="Etiquetar contactos"
           >
-            <ion-select-option value="1">1</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="1">Contacto 1</ion-select-option>
+            <ion-select-option value="2">Contacto 2</ion-select-option>
+            <ion-select-option value="3">Contacto 3</ion-select-option>
           </ion-select>
         </ion-item>
 
-        <ion-item>
-          <div class="media-picker">
-            <ion-icon name="cloud-upload-outline"></ion-icon>
-            <p>Toca aquí para agregar una imágen/vídeo</p>
-          </div>
-        </ion-item>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <div id="photoPicker" class="media-picker" (click)="takePhoto()">
+                <div id="photoNotShow">
+                  <ion-icon name="camera-outline"></ion-icon>
+                  <p>Toca aquí para agregar una imágen</p>
+                </div>
+                <img id="photoShow" src="" />
+              </div>
+            </ion-item>
+          </ion-col>
 
+          <ion-col size="6">
+            <ion-item>
+              <div id="videoPicker" class="media-picker" (click)="takeVideo()">
+                <div id="videoNotShow">
+                  <ion-icon name="cloud-upload-outline"></ion-icon>
+                  <p>Toca aquí para agregar un vídeo</p>
+                  <input
+                    type="file"
+                    style="visibility: hidden"
+                    (change)="saveVideo($event)"
+                    #video
+                    id="video"
+                    name="video"
+                    accept="video/*"
+                    capture="environment"
+                  />
+                </div>
+                <video autoplay loop muted id="videoShow"></video>
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
       </ion-list>
     </form>
   </div>

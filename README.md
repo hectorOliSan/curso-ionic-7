@@ -265,3 +265,35 @@ Abrimos nuestro proyecto social-map y hacemos los siguientes cambios:
 2. Agregar un método a cargo de agregar marcadores a este mapa.
 
 3. Agregar latitud y longitud a las propiedades del Post, para esto, en la página de creación/edición de posts, capturar las coordenadas del dispositivo con el plugin Geolocation de Capacitor.
+
+## 9. Cámara y Vídeo
+
+- Ejercicio 1
+
+Tomar nuestro proyecto social-map y hacer lo siguiente:
+
+1. Instalar todo lo necesario para tomar fotos y almacenarlas en el dispositivo.
+
+2. Ajustar permisos para iOS y Android
+
+3. Ajustar la página de Post para que permita tomar una foto y asignarla al post.
+
+- Ejercicio 2
+
+Tomar nuestro proyecto social-map y hacer los siguientes cambios:
+
+1. Instalar todo lo necesario para gestionar vídeos.
+
+2. Ajustar permisos para iOS y Android.
+
+3. Ajustar la página de Post para permitir grabar vídeo y adosarlo al Post.
+
+- Ejercicio 3
+
+Crear un proyecto nuevo y hacer lo siguiente:
+
+1. Instalar todo lo necesario para leer códigos QR.
+
+2. Implementar una página con un botón que permita escanear un código.
+
+3. El código escaneado tiene que mostrarse en pantalla.

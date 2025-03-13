@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -8,11 +8,13 @@ import {
 
 import { ToastController } from '@ionic/angular';
 
-import { flatMap, take } from 'rxjs';
+import { take } from 'rxjs';
 
 import { PostsFacade } from 'src/app/facades/posts.facade';
 
 import { Geolocation } from '@capacitor/geolocation';
+
+import { CamaraService } from 'src/app/services/camara.service';
 
 @Component({
   selector: 'app-post',
@@ -27,7 +29,7 @@ export class PostPage implements OnInit {
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     contacts: new FormControl('', []),
-    media: new FormControl('', []),
+    media: new FormControl([], []),
     lat: new FormControl(0, []),
     lng: new FormControl(0, []),
   });
@@ -35,7 +37,8 @@ export class PostPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastCtrl: ToastController,
-    private postsFacade: PostsFacade
+    private postsFacade: PostsFacade,
+    private camaraSvc: CamaraService
   ) {}
 
   ngOnInit() {}
@@ -47,6 +50,63 @@ export class PostPage implements OnInit {
       color,
     });
     await toast.present();
+  }
+
+  public async takePhoto() {
+    const photo = await this.camaraSvc.takePhoto();
+    const savedPhoto = await this.camaraSvc.savePhoto(photo);
+
+    const media = this.post_form.get('media')?.value;
+    media.push(savedPhoto);
+    this.post_form.get('media')?.setValue(media);
+
+    this.updatePhoto(savedPhoto);
+  }
+
+  public async updatePhoto(savedPhoto: { fileName?: string; webPath: any }) {
+    const photoPicker = document.getElementById('photoPicker') as HTMLElement;
+    const photoNotShow = document.getElementById('photoNotShow') as HTMLElement;
+    const photoShow = document.getElementById('photoShow') as HTMLImageElement;
+
+    if (savedPhoto.webPath) {
+      photoPicker.style.padding = '0';
+      photoNotShow.style.display = 'none';
+      photoShow.style.display = 'block';
+      photoShow.src = savedPhoto.webPath;
+    }
+  }
+
+  @ViewChild('video') videoInput!: ElementRef;
+  public async takeVideo() {
+    this.videoInput.nativeElement.click();
+  }
+
+  public async saveVideo(evento: any) {
+    const files = evento.currentTarget.files;
+    if (files.length) {
+      const video = files[0];
+      const savedVideo = await this.camaraSvc.saveVideo(video);
+      
+      const media = this.post_form.get('media')?.value;
+      media.push(savedVideo);
+      this.post_form.get('media')?.setValue(media);
+
+      this.updateVideo(savedVideo);
+    }
+  }
+
+  public async updateVideo(savedVideo: { fileName?: string; videoUri: any }) {
+    const videoPicker = document.getElementById('videoPicker') as HTMLElement;
+    const videoNotShow = document.getElementById('videoNotShow') as HTMLElement;
+    const videoShow = document.getElementById('videoShow') as HTMLVideoElement;
+
+    if (savedVideo.videoUri) {
+      videoPicker.style.padding = '0';
+      videoNotShow.style.display = 'none';
+      videoShow.style.display = 'block';
+      videoShow.src = await this.camaraSvc.getVideoUrl(savedVideo.videoUri);
+      videoShow.muted = true;
+    }
   }
 
   async process_post() {

@@ -18,7 +18,9 @@ export class MapPage implements OnInit, ViewDidEnter {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(environment.googleMaps.APIKey);
+  }
 
   async ionViewDidEnter() {
     this.gmap = await GoogleMap.create({
