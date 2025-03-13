@@ -239,3 +239,29 @@ Tomar el proyecto social-map y realizar las siguientes mejoras:
 - Ejercicio 3
 
 ¿Qué ventajas nos brida Capacitor por sobre Cordova?
+
+## 8. Geolocalización y Mapas
+
+- Ejercicio 1
+
+Abrimos nuestro proyecto social-map y hacemos los siguientes cambios:
+
+1. Instalar y configurar el plugin de Geolocalización de Capacitor
+
+- Ejercicio 2
+
+Abrimos nuestro proyecto social-map y hacemos los siguientes cambios:
+
+1. Crear una API Key de Google Maps para el proyecto.
+
+2. Instalar y configurar la API de GoogleMaps de Capacitor.
+
+- Ejercicio 3
+
+Abrimos nuestro proyecto social-map y hacemos los siguientes cambios:
+
+1. Implementar una instancia de GoogleMaps en la pagina de mapa.
+
+2. Agregar un método a cargo de agregar marcadores a este mapa.
+
+3. Agregar latitud y longitud a las propiedades del Post, para esto, en la página de creación/edición de posts, capturar las coordenadas del dispositivo con el plugin Geolocation de Capacitor.
