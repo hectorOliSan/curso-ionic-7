@@ -297,3 +297,25 @@ Crear un proyecto nuevo y hacer lo siguiente:
 2. Implementar una página con un botón que permita escanear un código.
 
 3. El código escaneado tiene que mostrarse en pantalla.
+
+## 10. Otras APIs de interés de Ionic Native
+
+- Ejercicio 1
+
+Tomar nuestro proyecto social-map y realizar los siguientes cambios:
+
+1. Agregar una Splash Screen que se presente por 5 segundos y se difumine en 2 segundos.
+
+2. Elegir un logo cualquiera y montar iconos tanto para Android como para iOS.
+
+- Ejercicio 2
+
+Crear un proyecto nuevo de Ionic y realizar lo siguiente:
+
+1. Hacer que el dispositivo vibre cuando haya algún cambio en la red (Podemos probar con activar y desactivar el modo avión).
+
+- Ejercicio 3
+
+Crear un proyecto de Ionic y realizar los siguientes cambios:
+
+1. Mostrar una notificación local cada vez que cambie la orientación de la pantalla del dispositivo.

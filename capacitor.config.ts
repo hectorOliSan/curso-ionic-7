@@ -8,6 +8,11 @@ const config: CapacitorConfig = {
     Camera: {
       webUseInput: true,
     },
+    SplashScreen: {
+      launchAutoHide: true,
+      launchShowDuration: 5000,
+      launchFadeOutDuration: 2000,
+    },
   },
 };
 
