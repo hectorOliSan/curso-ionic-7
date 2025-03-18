@@ -10,6 +10,11 @@ export const environment = {
   googleMaps: {
     APIKey: 'AIzaSyAOrlLkInZpjeCfh6CO9gbGFG9iH-Xm3h8',
   },
+  SQLite: {
+    DB_NAME: 'social-media-app',
+    DB_VERSION_KEY: 'sqlite-version',
+    CACHE_TABLE_NAME: 'social-media-requests-cache',
+  },
 };
 
 /*

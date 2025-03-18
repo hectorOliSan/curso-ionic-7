@@ -1,6 +1,6 @@
 {
   "name": "social-map",
-  "version": "0.10.1",
+  "version": "0.11.3",
   "author": "Héctor Olivares Sánchez",
   "homepage": "",
   "scripts": {
@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "18.2.13",
     "@angular/pwa": "18.2.12",
     "@angular/router": "18.2.13",
+    "@capacitor-community/sqlite": "6.0.2",
     "@capacitor/android": "6.2.0",
     "@capacitor/app": "6.0.2",
     "@capacitor/assets": "3.0.5",
@@ -33,6 +34,8 @@
     "@capacitor/haptics": "6.0.2",
     "@capacitor/ios": "6.2.0",
     "@capacitor/keyboard": "6.0.3",
+    "@capacitor/network": "^6.0.3",
+    "@capacitor/preferences": "^6.0.3",
     "@capacitor/splash-screen": "6.0.3",
     "@capacitor/status-bar": "6.0.2",
     "@ionic/angular": "7.8.6",

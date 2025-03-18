@@ -13,6 +13,9 @@ const config: CapacitorConfig = {
       launchShowDuration: 5000,
       launchFadeOutDuration: 2000,
     },
+    CapacitorSQLite: {
+      iosDatabaseLocation: 'Library/CapacitorDatabase',
+    },
   },
 };
 

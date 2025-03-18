@@ -319,3 +319,33 @@ Crear un proyecto nuevo de Ionic y realizar lo siguiente:
 Crear un proyecto de Ionic y realizar los siguientes cambios:
 
 1. Mostrar una notificación local cada vez que cambie la orientación de la pantalla del dispositivo.
+
+## 11. Almacenamiento Local
+
+- Ejercicio 1
+
+Tomar nuestro proyecto social-map y realizar los siguientes cambios:
+
+1. Instalar y configurar SQLite
+
+2. Crear un servicio encargado de inicializar la base de datos.
+
+3. El servicio encargado de la inicialización, debe contemplar la importación de la estructura base de la base de datos. Esta se puede contener dentro de la aplicación o descargar de un servicio externo.
+
+- Ejercicio 2
+
+Tomar nuestro proyecto social-map y realizar los siguientes cambios sobre el resultado del ejercicio #1:
+
+1. Crear un servicio de cacheo de peticiones que guarde en cache las peticiones hechas al servidor.
+
+2. Implementar el flujo offline para el servicio de Posts ya implementado anteriormente.
+
+3. Las peticiones cacheadas deben expirar luego de 90 minutos de almacenadas.
+
+- Ejercicio 3
+
+Tomar nuestro proyecto social-map y realizar los siguientes cambios sobre el resultado del ejercicio #2:
+
+1. Agregar un método que permita exportar la base de datos.
+
+2. Montar la estructura de la base de datos contemplando las entidades: Usuarios, Posts, Etiquetas, Media, Contactos.
