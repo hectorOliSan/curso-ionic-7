@@ -349,3 +349,67 @@ Tomar nuestro proyecto social-map y realizar los siguientes cambios sobre el res
 1. Agregar un método que permita exportar la base de datos.
 
 2. Montar la estructura de la base de datos contemplando las entidades: Usuarios, Posts, Etiquetas, Media, Contactos.
+
+## 12. Firebase como BAAS
+
+- Ejercicio 1
+
+Tomar el proyecto social-map y realizar los siguientes cambios:
+
+1. Crear un perfil de Firebase y montar las siguientes entidades en Firestore:
+
+   - Usuarios
+   - Posts
+   - Etiquetas
+   - Media
+   - Contactos
+
+2. Montar y/o adaptar requests para cada entidad que nos permitan gestionar CRUD de cada una.
+
+3. Montar fachadas que consuman estos requests.
+
+- Ejercicio 2
+
+Tomar el proyecto social-map y realizar los siguientes cambios:
+
+1.  En la consola de Firebase, montar la lógica necesaria para gestionar autenticación de usuarios.
+
+2.  Al registrarse un usuario, debe tener un registro con datos adicionales en la colección de usuarios.
+
+3.  Ajustar la página de login para que funcione con Firebase (Al menos, e-mail y password).
+
+4.  Ajustar la página de registro para que funcione con Firebase.
+
+5.  Montar un Auth Guard que custodie las rutas privadas.
+
+- Ejercicio 3
+
+Tomar el proyecto social-map y realizar los siguientes cambios:
+
+1.  Montar el flujo de creación de Posts. (Puedes agregar un botón flotante en la página del mapa, que nos lleve a la página de creación de Posts, o como mejor consideres).
+
+2.  Presentar todos los Posts de amigos en la página principal. Cada post debe tener un marcador en el mapa. Al clicar en el marcador, debe abrir un modal con los detalles del post.
+
+## 13. Apariencia de la Aplicación
+
+- Ejercicio 1
+
+Crear un proyecto Ionic nuevo:
+
+1. Crear el proyecto con el template tabs
+
+2. Crear un tema personalizado. Puedes utilizar herramientas como Coloors para elegir/crear una paleta de colores, y luego adaptarlo a Ionic con el generador de colores.
+
+- Ejercicio 2
+
+Crear un proyecto Ionic nuevo:
+
+1. Crear un tema oscuro para el proyecto del punto #1
+
+- Ejercicio 3
+
+Tomar el proyecto social-map y realizar los siguientes cambios:
+
+1. Crear un tema de colores con una paleta de colores a tu elección.
+
+2. Crear un tema oscuro para la aplicación.
