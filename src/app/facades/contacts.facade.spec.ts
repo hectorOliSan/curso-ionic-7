@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UsernameValidator } from './username.validator';
+import { ContactsFacade } from './contacts.facade';
 
-describe('UsernameValidator', () => {
-  let service: UsernameValidator;
+describe('LabelFacade', () => {
+  let service: ContactsFacade;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UsernameValidator);
+    service = TestBed.inject(ContactsFacade);
   });
 
   it('should be created', () => {

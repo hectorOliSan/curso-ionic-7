@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PostsRequest } from '../requests/posts.request';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { PostModel } from '../models/post.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,23 +9,27 @@ import { Observable } from 'rxjs';
 export class PostsFacade {
   constructor(private request: PostsRequest) {}
 
-  query(): Observable<any>  {
+  query(): Observable<PostModel[]> {
     return this.request.query();
   }
 
-  get(id: number): Observable<any>  {
+  createId(): string {
+    return this.request.createId();
+  }
+
+  get(id: string): Observable<PostModel> {
     return this.request.get(id);
   }
 
-  create(post: any): Observable<any>  {
-    return this.request.create(post);
+  create(post: PostModel): Observable<void> {
+    return from(this.request.create(post));
   }
 
-  update(post: any): Observable<any>  {
-    return this.request.update(post);
+  update(post: PostModel): Observable<void> {
+    return from(this.request.update(post));
   }
 
-  delete(id: number): Observable<any>  {
-    return this.request.delete(id);
+  delete(id: string): Observable<void> {
+    return from(this.request.delete(id));
   }
 }

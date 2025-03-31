@@ -58,7 +58,7 @@
             label="Email"
             placeholder="Email"
             type="email"
-            errorText="Email inválido"
+            errorText="{{ emailError }}"
             helperText="Campo requerido"
             [counter]="true"
             maxlength="30"
@@ -101,19 +101,25 @@
         <ion-item>
           <ion-input
             class="ion-input"
-            [clearInput]="true"
             fill="outline"
-            formControlName="age"
+            label="Fecha de nacimiento"
             label-placement="floating"
-            label="Edad"
-            placeholder="Edad"
-            value="18"
-            type="number"
-            min="18"
-            max="99"
-            helperText="El valor debe ser mayor 18 y menor 99"
+            value="{{ register_form.get('birthdate')?.value | date: 'dd/MM/yyyy' }}"
+            id="birth-date"
+            errorText="La edad debe ser mayor a 18 años y menor a 99 años"
+            helperText="Campo requerido"
           >
           </ion-input>
+          <ion-popover trigger="birth-date" size="cover" [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime
+                presentation="date"
+                [preferWheel]="true"
+                formControlName="birthdate"
+                (ionChange)="register_form.updateValueAndValidity()"
+              ></ion-datetime>
+            </ng-template>
+          </ion-popover>
         </ion-item>
       </ion-list>
     </form>
@@ -127,5 +133,7 @@
 </ion-content>
 
 <ion-footer class="ion-text-center">
-  <ion-button type="submit" form="register_ngform">CREAR CUENTA</ion-button>
+  <ion-button id="register_btn" type="submit" form="register_ngform">
+    CREAR CUENTA
+  </ion-button>
 </ion-footer>

@@ -77,7 +77,6 @@ export class CamaraService {
         webPath: `data:image/jpeg;base64,${file.data}`,
       });
     });
-    console.log(resultado);
     return resultado;
   }
 

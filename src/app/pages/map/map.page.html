@@ -6,13 +6,12 @@
 
 <ion-content [fullscreen]="true">
   <div class="page-content">
-    <!-- <iframe
-      class="map"
-      src="https://www.google.com/maps/embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    >
-    </iframe> -->
-    <capacitor-google-map id="map" #mapa></capacitor-google-map>
+    <capacitor-google-map #map></capacitor-google-map>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+      <ion-fab-button (click)="createPost()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-content>

@@ -16,6 +16,16 @@ import { Geolocation } from '@capacitor/geolocation';
 
 import { CamaraService } from 'src/app/services/camara.service';
 
+import { ContactModel } from 'src/app/models/contact.model';
+import { UserModel } from 'src/app/models/user.model';
+
+import { ContactsFacade } from 'src/app/facades/contacts.facade';
+import { UsersFacade } from 'src/app/facades/users.facade';
+import { LabelsFacade } from 'src/app/facades/labels.facade';
+import { MediaFacade } from 'src/app/facades/media.facade';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.page.html',
@@ -24,21 +34,31 @@ import { CamaraService } from 'src/app/services/camara.service';
 export class PostPage implements OnInit {
   public isNew: boolean = true;
 
+  public contactos: ContactModel[] = [];
+  public usuarios: UserModel[] = [];
+
   public post_form: FormGroup = this.formBuilder.group({
-    id: new FormControl(undefined, []),
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    contacts: new FormControl('', []),
+    contacts: new FormControl('0', []),
     media: new FormControl([], []),
     lat: new FormControl(0, []),
     lng: new FormControl(0, []),
   });
 
+  // @ts-ignore
+  @ViewChild('video') videoInput: ElementRef;
   constructor(
     private formBuilder: FormBuilder,
     private toastCtrl: ToastController,
     private postsFacade: PostsFacade,
-    private camaraSvc: CamaraService
+    private camaraSvc: CamaraService,
+    private contactsFacade: ContactsFacade,
+    private usersFacade: UsersFacade,
+    private labelsFacade: LabelsFacade,
+    private mediaFacade: MediaFacade,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -76,7 +96,6 @@ export class PostPage implements OnInit {
     }
   }
 
-  @ViewChild('video') videoInput!: ElementRef;
   public async takeVideo() {
     this.videoInput.nativeElement.click();
   }
@@ -86,7 +105,7 @@ export class PostPage implements OnInit {
     if (files.length) {
       const video = files[0];
       const savedVideo = await this.camaraSvc.saveVideo(video);
-      
+
       const media = this.post_form.get('media')?.value;
       media.push(savedVideo);
       this.post_form.get('media')?.setValue(media);
@@ -151,5 +170,9 @@ export class PostPage implements OnInit {
           this.showToast('Error al intentar actualizar el post', 'danger');
         }
       );
+  }
+
+  goToMap() {
+    this.router.navigate(['/tabs/map']);
   }
 }

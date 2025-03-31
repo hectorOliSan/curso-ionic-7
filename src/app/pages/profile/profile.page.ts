@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
 
 import { ToastController } from '@ionic/angular';
 
-import { take } from 'rxjs';
+import { from, take } from 'rxjs';
 
 import { UsersFacade } from 'src/app/facades/users.facade';
+import { UserModel } from 'src/app/models/user.model';
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,12 +24,13 @@ import { UsersFacade } from 'src/app/facades/users.facade';
 export class ProfilePage implements OnInit {
   public profile_form: FormGroup = this.formBuilder.group({
     id: new FormControl('', []),
-    avatar: new FormControl('', []),
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     birthdate: new FormControl(new Date().toISOString(), []),
-    sexo: new FormControl('', []),
+    province: new FormControl('', []),
+    city: new FormControl('', []),
+    gender: new FormControl('', []),
     phone: new FormControl('', [Validators.pattern(/^(6|7|8|9)\d{8}$/)]),
   });
 
@@ -36,24 +40,31 @@ export class ProfilePage implements OnInit {
     newPasswordConfirm: new FormControl('', [Validators.required]),
   });
 
-  random = Math.random();
-  USER_AVATAR: string = `https://api.dicebear.com/9.x/identicon/svg?seed=${Math.random()}`;
+  // user = this.authService.userSession$.getValue();
+  user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  USER_AVATAR = `https://api.dicebear.com/9.x/identicon/svg?seed=${this.user.id}`;
 
   constructor(
     private router: Router,
     private toastCtrl: ToastController,
     private formBuilder: FormBuilder,
-    private usersFacade: UsersFacade
+    private usersFacade: UsersFacade,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
     this.profile_form.get('email')?.disable();
 
-    this.usersFacade.get(1).subscribe((user) => {
-      this.profile_form.get('email')?.setValue(user.data.email);
-      this.profile_form.get('name')?.setValue(user.data.first_name);
-      this.profile_form.get('surname')?.setValue(user.data.last_name);
-    }, console.error);
+    this.profile_form.get('id')?.setValue(this.user?.id);
+    this.profile_form.get('email')?.setValue(this.user?.email);
+    this.profile_form.get('name')?.setValue(this.user?.name);
+    this.profile_form.get('surname')?.setValue(this.user?.surname);
+    this.profile_form.get('province')?.setValue(this.user?.province);
+    this.profile_form.get('city')?.setValue(this.user?.city);
+    this.profile_form.get('gender')?.setValue(this.user?.gender);
+    this.profile_form.get('phone')?.setValue(this.user?.phone);
+    this.profile_form.get('birthdate')?.setValue(this.user?.birthdate);
   }
 
   async showToast(message: string, color: string) {
@@ -76,9 +87,13 @@ export class ProfilePage implements OnInit {
       return;
     }
 
-    const user = this.profile_form.value;
-    this.usersFacade
-      .update(user)
+    const d = new Date(this.profile_form.value.birthdate);
+    this.profile_form
+      .get('birthdate')
+      ?.setValue(new Date(d.setHours(1, 0, 0, 0)).toISOString());
+
+    const user = this.profile_form.getRawValue();
+    from(this.usersFacade.update(user))
       .pipe(take(1))
       .subscribe(
         async (success) => {
@@ -120,26 +135,23 @@ export class ProfilePage implements OnInit {
       return;
     }
 
-    const user = this.profile_form.value;
-    this.usersFacade
-      .update(user)
-      .pipe(take(1))
-      .subscribe(
-        async (success) => {
-          this.showToast('Contraseña actualizada correctamente', 'success');
-        },
-        async (error) => {
-          this.showToast(
-            'Error al intentar actualizar la contraseña',
-            'danger'
-          );
-        }
+    try {
+      this.authService.updatePassword(
+        this.profile_form.get('email')?.value,
+        this.password_form.controls['password']?.value,
+        this.password_form.controls['newPassword']?.value
       );
+      this.showToast('Contraseña actualizada correctamente', 'success');
+    } catch (error) {
+      console.log(error);
+      this.showToast('Error al intentar actualizar la contraseña', 'danger');
+    }
 
     this.password_form.reset();
   }
 
   goToLogin() {
+    this.authService.logout();
     this.profile_form.reset();
     this.password_form.reset();
     this.router.navigate(['login'], { replaceUrl: true });
